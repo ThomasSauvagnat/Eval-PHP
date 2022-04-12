@@ -1,6 +1,13 @@
 <?php
 declare(strict_types=1);
-require('model/Blog.php');
+// require('model/Blog.php');
+
+spl_autoload_register(static function(string $fqcn) {
+    $path = str_replace('\\', '/', $fqcn).'.php';
+    require_once($path);
+});
+
+use \Blog;
 
 final class Article extends Blog {
 // Properties
